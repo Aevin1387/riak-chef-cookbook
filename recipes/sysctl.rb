@@ -28,31 +28,29 @@ linux_sysctl_params = {
 }
 
 freebsd_sysctl_params = {
-  vm: { swap_enabled: 0 },
+  # vm: { swap_enabled: 0 },
   kern: {
     ipc: {
       maxsockbuf: 8_388_608,
-      somaxconn: 40_000,
-      shmmax: 8_388_608
+      # somaxconn: 40_000,
+      # shmmax: 8_388_608
     }
   },
   net: {
     inet: {
       tcp: {
-        sendspace: 8_388_608,
+        # sendspace: 8_388_608,
         sendbuf_max: 8_388_608,
         sendbuf_auto: 1,
-        sendbuf_inc: 16_384,
-        recvspace: 8_388_608,
+        # recvspace: 8_388_608,
         recvbuf_max: 8_388_608,
         recvbuf_auto: 1,
-        recvbuf_inc: 524_288,
-        sack: {
-          enable: 1
-        },
-        finwait2_timeout: 15,
-        keepintvl: 30,
-        fast_finwait2_recycle: 1,
+        # sack: {
+        #   enable: 1
+        # },
+        # finwait2_timeout: 15,
+        # keepintvl: 30,
+        # fast_finwait2_recycle: 1,
       }
     }
   }
