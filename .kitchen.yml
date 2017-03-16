@@ -136,4 +136,3 @@ suites:
 - name: sysctl
   run_list:
     - recipe[riak::sysctl]
-  excludes: ["freebsd-10.3"]
