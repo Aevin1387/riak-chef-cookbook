@@ -35,34 +35,10 @@ end
 
 case  install_method
 when 'package', 'custom_repository'
-  case node['platform']
-  when 'ubuntu', 'debian'
-    packagecloud_repo 'basho/riak' do
-      type 'deb'
-      not_if { install_method == 'custom_repository' }
-    end
-
-  when 'centos', 'redhat', 'amazon', 'fedora'
-    packagecloud_repo 'basho/riak' do
-      type 'rpm'
-      not_if { install_method == 'custom_repository' }
-    end
-
-    case plat_ver_int
-    when 6, 2013, 2014
-      package_version = "#{package_version}.el6"
-    when 7
-      package_version = "#{package_version}.el7.centos"
-    when 19
-      package_version = "#{package_version}.fc#{plat_ver_int}"
-    end
-  end
-
-  package 'riak' do
-    action :install
-    version package_version
-    options '-o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold"' \
-            if node['platform_family'] == 'debian'
+  riak_package version_str do
+    version version_str
+    build node['riak']['package']['version']['build']
+    custom_repository install_method == 'custom_repository'
   end
 when 'custom_package', 'enterprise_package'
   case node['platform']
