@@ -83,24 +83,18 @@ when 'custom_package', 'enterprise_package'
     case plat_ver_int
     when 7
       package_file = "#{oss_or_ee}-#{package_version}.el7.centos.x86_64.rpm"
-    when 5, 6
+    when 6
       package_file = "#{oss_or_ee}-#{package_version}.el#{plat_ver_int}.x86_64.rpm"
     end
     ee_url_suffix = "/rhel/#{plat_ver_int}/#{package_file}"
   when 'amazon'
     package_file = "#{oss_or_ee}-#{package_version}.el6.x86_64.rpm"
     ee_url_suffix = "/rhel/6/#{package_file}"
-  when 'fedora'
-    package_file = "#{oss_or_ee}-#{package_version}.fc#{plat_ver_int}.x86_64.rpm"
-    ee_url_suffix = "/fedora/#{plat_ver_int}/#{package_file}"
   when 'freebsd'
     case plat_ver_int
     when 10
       package_file = "#{oss_or_ee}-#{version_str}.txz"
       ee_url_suffix = "/freebsd/10/#{package_file}"
-    when 9
-      package_file = "#{oss_or_ee}-#{version_str}-FreeBSD-amd64.tbz"
-      ee_url_suffix = "/freebsd/9.2/#{package_file}"
     end
   end
 
