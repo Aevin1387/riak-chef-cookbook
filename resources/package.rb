@@ -1,4 +1,4 @@
-property :version, String, default: '2.2.1', name_property: true
+property :version, String, name_property: true
 property :build, String, default: '1'
 property :custom_repository, [true, false], default: false
 
