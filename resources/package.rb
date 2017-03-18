@@ -28,7 +28,7 @@ action :install do
       not_if { new_resource.custom_repository }
     end
 
-    case node.run_state['platform_version'].to_i
+    case node['platform_version'].to_i
     when 6, 2013, 2014
       package_version = "#{package_version}.el6"
     when 7
